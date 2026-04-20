@@ -31,7 +31,7 @@ description: >
 7. **Use layout patterns for page structure.** Sidebar layout for dashboards/admin. Top nav for marketing/public. Content + aside for detail pages.
 8. **WCAG AA minimum.** All text must pass 4.5:1 contrast ratio. Touch/click targets minimum 48px for actions, 32px for navigation, 24px for info.
 9. **Use gap-only spacing.** Parents own the gap between children. Children own their internal padding. No margins — ever.
-10. **Full-bleed sections on desktop.** Section backgrounds stretch edge-to-edge (100vw, zero horizontal padding). Only the inner container constrains content width. Horizontal padding only applies on mobile/tablet (32px tablet, 24px mobile, 16px small mobile).
+10. **Full-bleed sections on desktop.** Section backgrounds stretch edge-to-edge (100vw, zero horizontal padding). Only the inner container constrains content width. Horizontal padding only applies on mobile/tablet (24px tablet, 16px mobile).
 
 ### Don't
 
@@ -470,7 +470,7 @@ Benchmarked against Carbon (IBM), Primer (GitHub), and Polaris (Shopify). 12-col
 |-----------|------|-----------|---------|--------|-------------|-------------------|
 | `xs` | Mobile | 0px | 4 | 16px | 16px | Fluid (full-width) |
 | `sm` | Mobile Large | 576px | 4 | 16px | 16px | Fluid (full-width) |
-| `md` | Tablet | 768px | 8 | 24px | 32px | Fluid (full-width) |
+| `md` | Tablet | 768px | 8 | 24px | 24px | Fluid (full-width) |
 | `lg` | Desktop | 1024px | 12 | 24px | 40px | Fluid up to max-width |
 | `xl` | Desktop Large | 1440px | 12 | 32px | auto | Centered, max-width |
 
@@ -510,23 +510,17 @@ Three container types for different content needs:
 @media (max-width: 1023px) {
   .wiom-container-narrow,
   .wiom-container,
-  .wiom-container-wide { padding-inline: var(--wiom-space-32); }  /* Tablet: 32px */
+  .wiom-container-wide { padding-inline: var(--wiom-space-24); }  /* Tablet: 24px */
 }
 
 @media (max-width: 767px) {
   .wiom-container-narrow,
   .wiom-container,
-  .wiom-container-wide { padding-inline: var(--wiom-space-24); }  /* Mobile: 24px */
-}
-
-@media (max-width: 479px) {
-  .wiom-container-narrow,
-  .wiom-container,
-  .wiom-container-wide { padding-inline: var(--wiom-space-16); }  /* Small mobile: 16px */
+  .wiom-container-wide { padding-inline: var(--wiom-space-16); }  /* Mobile: 16px */
 }
 ```
 
-**Responsive padding scale:** Desktop = 0 (container handles it) → Tablet = 32px → Mobile = 24px → Small mobile = 16px. Content never touches the screen edges.
+**Responsive padding scale:** Desktop = 0 (container handles it) → Tablet = 24px → Mobile = 16px. Content never touches the screen edges.
 
 ### 12-Column Grid Utilities
 
@@ -741,7 +735,7 @@ Vertical section padding also scales with viewport:
 
 ### Desktop-First Layout Rules
 
-1. **Full-bleed on desktop.** Sections have zero horizontal padding on desktop. Backgrounds stretch edge-to-edge. Only the inner container constrains content via `max-width` + `margin-inline: auto`. Horizontal padding (16px) only applies below 1024px for mobile/tablet.
+1. **Full-bleed on desktop.** Sections have zero horizontal padding on desktop. Backgrounds stretch edge-to-edge. Only the inner container constrains content via `max-width` + `margin-inline: auto`. Horizontal padding only applies below 1024px (24px tablet, 16px mobile).
 2. **Container max-widths:** Narrow 680px, Default 1360px, Wide 1600px. Content never stretches to full viewport — the container handles it.
 3. **Reading line length:** 60–80 characters max (~600–680px). Use `.wiom-container-narrow` or `max-width` on text blocks.
 4. **Sidebar layouts:** At `lg`+ breakpoints, sidebars are 280px fixed. Content fills remaining space. Collapses to hamburger on mobile/tablet.
@@ -768,12 +762,12 @@ Vertical section padding also scales with viewport:
 
 /* Tablet: breathing room from edges */
 @media (max-width: 1023px) {
-  .section { padding-inline: var(--wiom-space-32); }
+  .section { padding-inline: var(--wiom-space-24); }
 }
 
-/* Mobile: slightly tighter but still comfortable */
+/* Mobile: tight but comfortable */
 @media (max-width: 767px) {
-  .section { padding-inline: var(--wiom-space-24); }
+  .section { padding-inline: var(--wiom-space-16); }
 }
 ```
 
